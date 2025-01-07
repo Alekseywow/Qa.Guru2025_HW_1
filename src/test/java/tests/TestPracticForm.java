@@ -1,5 +1,5 @@
-
-       // 1. Импорт библиотек
+package tests;
+// 1. Импорт библиотек
 import com.codeborne.selenide.Configuration; //com.codeborne.selenide.Configuration: класс для настройки конфигурации Selenide.
 import org.junit.jupiter.api.BeforeAll; // org.junit.jupiter.api.BeforeAll и org.junit.jupiter.api.Test: аннотации JUnit для подготовки теста и самого теста.
 import org.junit.jupiter.api.Test; // org.junit.jupiter.api.BeforeAll и org.junit.jupiter.api.Test: аннотации JUnit для подготовки теста и самого теста.
@@ -38,7 +38,6 @@ public class TestPracticForm {
         $("#userNumber").setValue("8900909090");
 
         //Поле Дата Рождения:
-
         $("#dateOfBirthInput").click(); //Кликает на поле "Дата Рождения": чтобы открыть виджет выбора даты.
         //$(".react-datepicker__month-select").click();
         $(".react-datepicker__month-select").selectOption("September"); //$(".react-datepicker__month-select").selectOption("September"): выбирает месяц.
@@ -46,20 +45,14 @@ public class TestPracticForm {
         $$(".react-datepicker__day:not(.react-datepicker__day--outside-month)").findBy(text("26")).click();// (".react-datepicker__day:not(.react-datepicker__day--outside-month)").findBy(text("26")).click(): находит и кликает на 26-й день (егда это не день предыдущего/следующего месяца)
 
         //Заполнение дополнительных полей
-
         $("#subjectsInput").setValue("Maths").pressEnter(); //$("#subjectsInput").setValue("Maths").pressEnter(): вводит значение "Maths" и эмулирует нажатие клавиши Enter для подтверждения экскурсии.
-
         $("#hobbiesWrapper").$(byText("Sports")).click(); //(byText("Sports")).click(): находит хобби "Sports" и кликает по нему.
-
-        $("#uploadPicture").uploadFromClasspath("Cat.png"); //$("#uploadPicture").uploadFromClasspath("Cat.png"): загружает изображение изclasspath.
+        $("#uploadPicture").uploadFromClasspath("img/Cat.png"); //$("#uploadPicture").uploadFromClasspath("Cat.png"): загружает изображение изclasspath.
 
         //Ввод адреса и выбора штата и города
-
         $("#currentAddress").setValue("INDIA"); //Идут операции выбора штата "Haryana" и города "Karnal": ввод значений и нажатие Enter для подтверждения.
-
         $("#react-select-3-input").setValue("Haryana").pressEnter();
         $("#react-select-4-input").setValue("8900909090");
-
         $("#react-select-3-input").setValue("Haryana").pressEnter();
         $("#react-select-4-input").setValue("Karnal").pressEnter();
 
@@ -78,7 +71,7 @@ public class TestPracticForm {
         $(".table").$(byText("Date of Birth")).sibling(0).shouldHave(text("26 September,1994"));
         $(".table").$(byText("Subjects")).sibling(0).shouldHave(text("Maths"));
         $(".table").$(byText("Hobbies")).sibling(0).shouldHave(text("Sports"));
-        $(".table").$(byText("Picture")).sibling(0).shouldHave(text("Cat.png"));
+        $(".table").$(byText("Picture")).sibling(0).shouldHave(text("img/Cat.png"));
         $(".table").$(byText("Address")).sibling(0).shouldHave(text("INDIA"));
         $(".table").$(byText("State and City")).sibling(0).shouldHave(text("Haryana Karnal"));
     }
